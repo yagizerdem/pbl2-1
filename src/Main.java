@@ -1,26 +1,69 @@
+import java.awt.*;
+import java.io.PipedReader;
+import java.util.ArrayList;
 
 public class Main {
-    public static Screen screen = new Screen();
-    public static void main(String[] args) {
+    public static Editor  TextEditor = new Editor();
+    public static void main(String[] args) throws  Exception {
+        Robot r1 = new Robot();
+        Robot r2 = new Robot();
 
-//        Box newBox = new Box(10 ,1);
-//        newBox.fill();
-//        newBox.draw();
+        for(int i = 0  ; i < 20 ; i++){
+//            String coords = SD.coordlist[i];
+//            int startx = Integer.parseInt(coords.split(" ")[1]);
+//            int starty = Integer.parseInt(coords.split(" ")[0]);
 
-        Piece piece = new Piece(3 ,0 , 10);
-        piece.Load(1);
-        piece.Draw();
+            Piece newPiece = new Piece();
+            SD.allPieces.add(newPiece);
+        }
 
-        Piece piece2 = new Piece(3 ,0 , 40);
-        piece2.Load(1);
-        piece2.Draw();
 
-        Piece piece3 = new Piece(3 ,0 , 60);
-        piece3.Load(1);
-        piece3.Draw();
+        Utility.PrintPieces();
 
-//        Box box = new Box(10 ,10);
-//        box.initNumber();
-//        box.draw();
+        while (true){
+            if(SD.keypr == 1){
+                Utility.ClearScreen();
+                if(SD.rkey == 39){
+                    if(SD.SelectedPieceID <19) SD.SelectedPieceID++;
+                    Utility.PrintPieces();
+                }
+                else if(SD.rkey == 37){
+                    if(SD.SelectedPieceID > 1) SD.SelectedPieceID--;
+                    Utility.PrintPieces();
+                }
+                else if(SD.rkey == 10){
+                    // enter
+                    if(!r1.isDone) r1.BuildScreen();
+                    else if(!r2.isDone) r2.BuildScreen();
+                }
+                else if(SD.rkey == 82){
+                    // rotate r
+                    Piece selected = SD.allPieces.get(SD.SelectedPieceID - 1);
+                    selected.Rotate();
+
+                    Utility.PrintPieces();
+                }
+                else if(SD.rkey == 77){
+                    // referse m
+                    Piece selected = SD.allPieces.get(SD.SelectedPieceID - 1);
+                    selected.Rotate();
+                    selected.Rotate();
+                    Utility.PrintPieces();
+
+
+                }
+
+            }
+
+            Utility.Clear();
+            if(r1.isDone && r2.isDone) break;
+        }
+        Utility.ClearScreen();
+        System.out.println("robot olimpics now");
+        System.out.println(r1.container[0][2]);
+        // robot build done olimpics noew
+
+
     }
+
 }
