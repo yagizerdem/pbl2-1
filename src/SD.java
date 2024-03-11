@@ -11,7 +11,22 @@ public class SD {
 
     public  static  int SelectedPieceID = 1;
 
+    public static int r1In = -1;
+    public static int r1Sk = -1;
+    public static  int r1Sp = -1;
 
+    public static int r2In = -1;
+    public static int r2Sk = -1;
+    public static  int r2Sp = -1;
+
+
+    public static int c1Sk = -1;
+    public static  int c1Sp = -1;
+    public static int c1In = -1;
+
+    public static int c2In = -1;
+    public static int c2Sk = -1;
+    public static  int c2Sp = -1;
 
     public static ArrayList<Piece> allPieces = new ArrayList<>();
     public static String[] coordlist = {"0 0","0 17" ,"0 34" ,"0 51","17 0","17 17" ,"17 34" ,"17 51",

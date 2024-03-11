@@ -10,17 +10,25 @@ public class Robot {
             {"-1","0","0","0","-1"},
         {"-1","0","-1","0","-1"}
     };
+    public  Box[][] uicontainer = {
+            {null,null,null,null,null},
+            {null,null,null,null,null},
+            {null,null,null,null,null},
+            {null,null,null,null,null},
+            {null,null,null,null,null}
+    };
+
 
     public    void PrintRobotUI(){
         Editor.cnt.setCursorPosition(0,0);
         for(int i = 0 ; i < 5 ; i++){
             for(int j = 0 ; j <5 ; j++){
-                if(this.container[i][j] == "0"){
-                    Box.PrintEmptyBox(j * 5, i*5);
+                if(this.uicontainer[i][j] == null){
+                    if(i == 0 && j == 2 || i == 1 ||((i == 2  ||i == 3 || i == 5)&& j <=3 && j >= 1) ||i == 4&& j == 1 || i == 4 && j == 3)  Box.PrintEmptyBox(j * 5, i*5);
                 }
                 else{
                     // prit box
-
+                    this.uicontainer[i][j].Print(j * 5, i*5);
                 }
             }
         }
@@ -82,7 +90,7 @@ public class Robot {
                             for(int j = 0 ; j < selectdPiece.container[0].length ; j++){
                                 if(selectdPiece.container[i][j] != null){
                                     this.container[this.by + i][this.bx + j] = selectdPiece.container[i][j].fx + " " + selectdPiece.container[i][j].fy;
-
+                                    this.uicontainer[this.by + i][this.bx + j] = selectdPiece.container[i][j];
                                 }
                             }
                         }
