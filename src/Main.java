@@ -107,7 +107,120 @@ public class Main {
         SD.c1Sp = c1ll + c1rl  / (Math.max(c1ll , c1rl) / Math.min(c1ll , c1rl));
         SD.c2Sp = c2ll + c2rl  / (Math.max(c2ll , c2rl) / Math.min(c2ll , c2rl));
 
+
+        Utility.ClearScreen();
+
         // games
+
+
+        int totalChesspoint = SD.r1In + SD.r2In + SD.c1In + SD.c2In;
+        int totalPingPongpoint = SD.r1Sk + SD.r2Sk + SD.c1Sk + SD.c2Sk;
+        int totalRobotRUnpoint = SD.r1Sp + SD.r2Sp + SD.c1Sp + SD.c2Sp;
+
+
+        //chess
+        int[] intervals = {
+            SD.r1In,
+            SD.r1In + SD.r2In,
+                SD.r1In + SD.r2In + SD.c1In,
+                SD.r1In + SD.r2In+ SD.c1In+ SD.c2In,
+        };
+
+        while (true){
+            int rnd = Utility.GenerateRandomNumber(totalChesspoint);
+            if(rnd >= intervals[0] && rnd <= intervals[1]){
+                SD.r1chessPoint++;
+            }
+            else if(rnd >= intervals[1] && rnd <= intervals[2]){
+                SD.r2chessPoint++;
+            }
+            else if(rnd >= intervals[0] && rnd <= intervals[1]){
+                SD.c1chessPoint++;
+            }
+            else{
+                SD.c2chessPoint++;
+            }
+
+            if(SD.r1chessPoint == 20 || SD.r2chessPoint == 20 || SD.c1chessPoint == 20 || SD.c2chessPoint == 20){
+               break;
+            }
+        }
+
+        // winner
+        if(SD.r1chessPoint == 20) System.out.println("robot chess winner " + "human robot 1");
+        if(SD.r2chessPoint == 20) System.out.println("robot chess winner " + "human robot 2");
+        if(SD.c1chessPoint == 20) System.out.println("robot chess winner " + "computer robot 1");
+        if(SD.c2chessPoint == 20) System.out.println("robot chess winner " + "computer robot 2");
+
+        // ping pong
+        int[] intervals2 = {
+                SD.r1Sk,
+                SD.r1Sk + SD.r2Sk,
+                SD.r1Sk + SD.r2Sk + SD.c1Sk,
+                SD.r1Sk + SD.r2Sk+ SD.c1Sk+ SD.c2Sk,
+        };
+
+        while (true){
+            int rnd = Utility.GenerateRandomNumber(totalPingPongpoint);
+            if(rnd >= intervals2[0] && rnd <= intervals2[1]){
+                SD.r1pingPongPoint++;
+            }
+            else if(rnd >= intervals2[1] && rnd <= intervals2[2]){
+                SD.r2pingPongPoint++;
+            }
+            else if(rnd >= intervals2[0] && rnd <= intervals2[1]){
+                SD.c1pingPongPoint++;
+            }
+            else{
+                SD.c2pingPongPoint++;
+            }
+
+            if(SD.r1pingPongPoint == 20 || SD.r2pingPongPoint == 20 || SD.c1pingPongPoint == 20 || SD.c2pingPongPoint == 20){
+                break;
+            }
+        }
+
+        // winner
+        if(SD.r1pingPongPoint == 20) System.out.println("robot ping pong winner " + "human robot 1");
+        if(SD.r2pingPongPoint == 20) System.out.println("robot ping pong winner " + "human robot 2");
+        if(SD.c1pingPongPoint == 20) System.out.println("robot ping pong winner " + "computer robot 1");
+        if(SD.c2pingPongPoint == 20) System.out.println("robot ping pong winner " + "computer robot 2");
+
+
+        // robot run
+        int[] intervals3 = {
+                SD.r1Sp,
+                SD.r1Sp + SD.r2Sp,
+                SD.r1Sp + SD.r2Sp + SD.c1Sp,
+                SD.r1Sp + SD.r2Sp+ SD.c1Sp+ SD.c2Sp,
+        };
+
+        while (true){
+            int rnd = Utility.GenerateRandomNumber(totalPingPongpoint);
+            if(rnd >= intervals3[0] && rnd <= intervals3[1]){
+                SD.r1runPoint++;
+            }
+            else if(rnd >= intervals3[1] && rnd <= intervals3[2]){
+                SD.r2runPoint++;
+            }
+            else if(rnd >= intervals3[0] && rnd <= intervals3[1]){
+                SD.c1runPoint++;
+            }
+            else{
+                SD.c2runPoint++;
+            }
+
+            if(SD.r1runPoint == 20 || SD.r2runPoint == 20 || SD.c1runPoint == 20 || SD.c2runPoint == 20){
+                break;
+            }
+        }
+
+        // winner
+        if(SD.r1runPoint == 20) System.out.println("robot run winner " + "human robot 1");
+        if(SD.r2runPoint == 20) System.out.println("robot run winner " + "human robot 2");
+        if(SD.c1runPoint == 20) System.out.println("robot run winner " + "computer robot 1");
+        if(SD.c2runPoint == 20) System.out.println("robot run winner " + "computer robot 2");
+
 
     }
 

@@ -3,6 +3,8 @@ public class Robot {
     public  boolean isDone = false;
     public int bx = 0 ;
     public  int by = 0;
+
+
     public  String[][] container = {
         {"-1","-1","0","-1","-1"},
         {"0","0","0","0","0"},
